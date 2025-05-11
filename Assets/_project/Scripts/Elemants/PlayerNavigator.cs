@@ -4,7 +4,19 @@ using UnityEngine;
 public class PlayerNavigator : MonoBehaviour
 {
     public float speed;
+
+    [Space(10)]
+    [Header("Jump")]    
+    public bool isJumpControlActive;
+    public float jumpPower;
+    public LayerMask groundLayerMask;
+
+    [Space(10)]
+    [Header("Look At Mouse")]
+    public bool playerLooksAtMouse;
+
     private Rigidbody _rb;
+    private bool _isGrounded;
 
     private void Awake()
     {
@@ -14,6 +26,22 @@ public class PlayerNavigator : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        if (playerLooksAtMouse)
+        {
+            LookAtMouse();
+        }
+    }
+
+    private void LookAtMouse()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray.origin, ray.direction, out RaycastHit hit, 50, groundLayerMask))
+        {
+            var lookPos = hit.point;
+            lookPos.y = transform.position.y;
+            transform.LookAt(lookPos);
+        }
     }
 
     void MovePlayer()
@@ -37,7 +65,22 @@ public class PlayerNavigator : MonoBehaviour
             direction += Vector3.right;
         }
 
-        _rb.linearVelocity = direction.normalized * speed;
+        var yVel = _rb.linearVelocity;
+
+        yVel.x = 0;
+        yVel.z = 0;
+
+        _rb.linearVelocity = direction.normalized * speed + yVel;
+
+        if (isJumpControlActive)
+        {
+            _isGrounded = Physics.Raycast(transform.position + Vector3.up *  .1f, Vector3.down, .5f, groundLayerMask);
+        }
+
+        if (isJumpControlActive && _isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, jumpPower, _rb.linearVelocity.z);
+        }
     }
 
     internal void RestartPlayerNavigator()

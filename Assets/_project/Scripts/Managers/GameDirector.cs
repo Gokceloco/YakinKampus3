@@ -3,8 +3,14 @@ using UnityEngine;
 
 public class GameDirector : MonoBehaviour
 {
+    public static GameDirector instance;
     public LevelManager levelManager;
     public Player player;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
