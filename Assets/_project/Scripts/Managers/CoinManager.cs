@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public int coinCount;
 
-    // Update is called once per frame
-    void Update()
+    public void CoinCollected()
     {
-        
+        coinCount++;
     }
 }
