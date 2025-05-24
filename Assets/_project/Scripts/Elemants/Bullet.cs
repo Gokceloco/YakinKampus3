@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed;
+    public float range;
 
     private Player _player;    
     private Transform _transform;
@@ -16,7 +17,7 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         _transform.position += _transform.forward * speed * Time.deltaTime;
-        if ((_transform.position - _player.transform.position).magnitude > 50)
+        if ((_transform.position - _player.transform.position).magnitude > range)
         {
             Destroy(gameObject);
         }
@@ -26,7 +27,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.gameObject.SetActive(false);
+            var enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.GetHit(1);
+            }
             gameObject.SetActive(false);
         }
     }

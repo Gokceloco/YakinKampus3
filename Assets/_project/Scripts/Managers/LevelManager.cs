@@ -6,7 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public List<Level> levels;
 
-    private Level _currentLevel;
+    public Level currentLevel;
 
     public int levelNo;
 
@@ -19,14 +19,14 @@ public class LevelManager : MonoBehaviour
     private void CreateNewLevel()
     {
         levelNo = Mathf.Clamp(levelNo, 1, levels.Count);
-        _currentLevel = Instantiate(levels[levelNo-1]);
+        currentLevel = Instantiate(levels[levelNo-1]);
     }
 
     private void DeleteCurrentLevel()
     {
-        if (_currentLevel != null)
+        if (currentLevel != null)
         {
-            Destroy(_currentLevel.gameObject);
+            Destroy(currentLevel.gameObject);
         }
     }
 }
