@@ -19,7 +19,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 3006
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
@@ -127,7 +127,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _QueueOffset: 0
+    - _QueueOffset: 6
     - _ReceiveShadows: 1
     - _RotationSpeed: 2
     - _Smoothness: 0.5
@@ -146,8 +146,8 @@ Material:
     - _YScrollSpeed3: -0.2
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.4933548, b: 1, a: 0.6156863}
-    - _Color: {r: 0, g: 0.49335474, b: 1, a: 0.6156863}
+    - _BaseColor: {r: 0, g: 0.49335474, b: 1, a: 0.3254902}
+    - _Color: {r: 0, g: 0.49335468, b: 1, a: 0.3254902}
     - _Color1: {r: 0, g: 0.14901961, b: 0.05490196, a: 1}
     - _Color2: {r: 1, g: 0.2509804, b: 0.8862745, a: 1}
     - _Color3: {r: 1, g: 1, b: 1, a: 1}

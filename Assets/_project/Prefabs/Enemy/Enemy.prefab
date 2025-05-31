@@ -101,7 +101,7 @@ MonoBehaviour:
   speed: 5
   startHealth: 3
   enemyState: 0
-  enemySightRange: 19
+  enemySightRange: 25
 --- !u!195 &889691150433938694
 NavMeshAgent:
   m_ObjectHideFlags: 0
