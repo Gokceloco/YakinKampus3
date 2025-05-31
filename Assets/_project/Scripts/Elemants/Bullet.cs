@@ -27,11 +27,17 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            GameDirector.instance.fXManager.PlayBulletImpactPS(_transform.position, _transform.forward, Color.red);
             var enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.GetHit(1);
             }
+            gameObject.SetActive(false);
+        }
+        if (other.CompareTag("Ground"))
+        {
+            GameDirector.instance.fXManager.PlayBulletImpactPS(_transform.position, _transform.forward, new Color(1, .6f, 0, 1));
             gameObject.SetActive(false);
         }
     }
